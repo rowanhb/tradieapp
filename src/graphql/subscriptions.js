@@ -7,6 +7,16 @@ export const onCreateBusiness = /* GraphQL */ `
       id
       name
       image
+      jobs {
+        items {
+          id
+          businessId
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       owner
@@ -19,6 +29,16 @@ export const onUpdateBusiness = /* GraphQL */ `
       id
       name
       image
+      jobs {
+        items {
+          id
+          businessId
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       owner
@@ -31,9 +51,52 @@ export const onDeleteBusiness = /* GraphQL */ `
       id
       name
       image
+      jobs {
+        items {
+          id
+          businessId
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       owner
+    }
+  }
+`;
+export const onCreateJob = /* GraphQL */ `
+  subscription OnCreateJob {
+    onCreateJob {
+      id
+      businessId
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateJob = /* GraphQL */ `
+  subscription OnUpdateJob {
+    onUpdateJob {
+      id
+      businessId
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteJob = /* GraphQL */ `
+  subscription OnDeleteJob {
+    onDeleteJob {
+      id
+      businessId
+      name
+      createdAt
+      updatedAt
     }
   }
 `;

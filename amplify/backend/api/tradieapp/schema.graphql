@@ -2,4 +2,13 @@ type Business @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   image: String
+  jobs: [Job] @connection(keyName: "byBusiness", fields: ["id"])
+}
+
+type Job @model 
+@key(name: "byBusiness", fields: ["businessId", "name"])
+{
+  id: ID!
+  businessId: ID!
+  name: String!
 }

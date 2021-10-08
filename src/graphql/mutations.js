@@ -10,6 +10,16 @@ export const createBusiness = /* GraphQL */ `
       id
       name
       image
+      jobs {
+        items {
+          id
+          businessId
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       owner
@@ -25,6 +35,16 @@ export const updateBusiness = /* GraphQL */ `
       id
       name
       image
+      jobs {
+        items {
+          id
+          businessId
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       owner
@@ -40,9 +60,61 @@ export const deleteBusiness = /* GraphQL */ `
       id
       name
       image
+      jobs {
+        items {
+          id
+          businessId
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       owner
+    }
+  }
+`;
+export const createJob = /* GraphQL */ `
+  mutation CreateJob(
+    $input: CreateJobInput!
+    $condition: ModelJobConditionInput
+  ) {
+    createJob(input: $input, condition: $condition) {
+      id
+      businessId
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateJob = /* GraphQL */ `
+  mutation UpdateJob(
+    $input: UpdateJobInput!
+    $condition: ModelJobConditionInput
+  ) {
+    updateJob(input: $input, condition: $condition) {
+      id
+      businessId
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteJob = /* GraphQL */ `
+  mutation DeleteJob(
+    $input: DeleteJobInput!
+    $condition: ModelJobConditionInput
+  ) {
+    deleteJob(input: $input, condition: $condition) {
+      id
+      businessId
+      name
+      createdAt
+      updatedAt
     }
   }
 `;

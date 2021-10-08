@@ -5,7 +5,10 @@ import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listBusinesses } from './graphql/queries';
 import { createBusiness as createBusinessMutation, deleteBusiness as deleteBusinessMutation } from './graphql/mutations';
 
-const initialFormState = { name: '' }
+const initialFormState = { 
+  name: '',
+  image: ''
+}
 
 function App() {
   const [businesses, setBusinesses] = useState([]);
@@ -56,28 +59,36 @@ function App() {
   return (
     <div className="App">
       <h1>My App</h1>
-      <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Business name"
-        value={formData.name}
-      />
-      <input
-        type="file"
-        onChange={onChange}
-      />
-      <button onClick={createBusiness}>Create Business</button>
       <div style={{marginBottom: 30}}>
+        <h2>Businesses</h2>
         {
-          businesses.map(business => (
+          (businesses.length) ? businesses.map(business => (
             <div key={business.id || business.name}>
-              <h2>{business.name}</h2>
+              <h3>{business.name}</h3>
               <button onClick={() => deleteBusiness(business)}>Delete business</button>
               {
-                business.image && <img src={business.image} style={{width: 400}} />
+                business.image && <img src={business.image} style={{width: 100}} />
               }
             </div>
-          ))
+          )) : 'No businesses set up yet, add one below'
         }
+      </div>
+      <div style={{marginBottom: 30}}>
+        <h2>Add a new business</h2>
+        <input
+          onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+          placeholder="Business name"
+          value={formData.name}
+        />
+        <input
+          type="file"
+          onChange={onChange}
+        />
+        <button onClick={createBusiness}>Create Business</button>
+      </div>
+      <div style={{marginBottom: 30}}>
+        <h2>Join an existing business</h2>
+        <p>TODO</p>
       </div>
       <AmplifySignOut />
     </div>
