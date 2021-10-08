@@ -1,4 +1,4 @@
-type Business @model {
+type Business @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   image: String

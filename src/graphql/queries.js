@@ -9,6 +9,7 @@ export const getBusiness = /* GraphQL */ `
       image
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -25,6 +26,7 @@ export const listBusinesses = /* GraphQL */ `
         image
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }

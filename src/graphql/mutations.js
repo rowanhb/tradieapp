@@ -12,6 +12,7 @@ export const createBusiness = /* GraphQL */ `
       image
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -26,6 +27,7 @@ export const updateBusiness = /* GraphQL */ `
       image
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -40,6 +42,7 @@ export const deleteBusiness = /* GraphQL */ `
       image
       createdAt
       updatedAt
+      owner
     }
   }
 `;
